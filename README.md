@@ -1,36 +1,24 @@
 # Uno Zen for Ghost
 
-![Last version](https://img.shields.io/github/tag/Kikobeats/uno-zen.svg?style=flat-square)
+![Last version](https://img.shields.io/github/tag/bestswifter/uno-zen.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/Kikobeats/uno-zen/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/uno-zen)
 ![Ghost version](https://img.shields.io/badge/Ghost-0.8.x-brightgreen.svg?style=flat-square)
 ![Node version](https://img.shields.io/node/v/uno-zen.svg?style=flat-square)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> Minimalist and Elegant theme for Ghost.
+
+> 感谢 Kikobeats 的主题 [Uno Zen](https://github.com/Kikobeats/uno-zen)，本主题由此改造而成
 <br>
-> **NOTE**: Commercial version is available as [Uno Urban](https://sellfy.com/p/G5kK).
+> **NOTE**: 商用版本可以在这里购买 [Uno Urban](https://sellfy.com/p/G5kK).
 
 [<img src="http://i.imgur.com/LCSB4Ca.jpg">](http://kikobeats.com)
 
-- [Uno Zen for Ghost](#uno-zen-for-ghost)
-  * [Introduction](#introduction)
-    + [Whats is new in 2.x](#whats-is-new-in-2x)
-  * [Installation](#installation)
-  * [Update](#update)
-    + [Update your current version](#update-your-current-version)
-    + [Receive a mail notification when a new version is available](#receive-a-mail-notification-when-a-new-version-is-available)
-  * [Development and Customization](#development-and-customization)
-  * [Showcase](#showcase)
-  * [Related](#related)
-  * [License](#license)
-
 ---
 
-## Introduction
+# 介绍
 
-**Uno Zen** is a theme for Ghost inspired in [Uno](https://github.com/daleanthony/Uno) but providing a set of missing features in the original theme that are aligned with minimalist design style.
+**Uno Zen** 是基于 [Uno](https://github.com/daleanthony/Uno) 开发的一个 Ghost 博客主题。它提供了功能和样式上一些小的改进和优化。
 
-### Whats is new in 2.x
+### 我对原主题的改动
 
 - Totally rewritten using HTML5 and CSS3.
 - Improved development workflow with gulp + browersync.
@@ -45,94 +33,109 @@ Things that already existed:
 - Loading progress state for each page.
 - Estimation about the time of reading.
 
-You can see a [demo](http://kikobeats.com) in my own blog. Also you can check the [styleguide](http://kikobeats.com/styleguide) to view how it looks.
+###你可以访问我的博客查看 [demo](https://bestswifter.com)
 
-## Installation
+## 安装
 
-Please ensure that `git` and `curl` is installed on your machine.
+首先确保你的服务器已经安装了 Git
 
-Enter the theme folder (`content/themes`) of your Ghost installation and paste the following command:
+进入 ghost 根目录下的 theme 文件夹(`path-to-ghost/content/themes`)，然后运行以下命令：
 
 ```bash
-$ curl -sSL http://git.io/vcIHr | sh
+git clone https://github.com/bestswifter/uno-zen.git
 ```
 
-### Alternative installation (to enable deployment to remote server):
+重启 ghost 服务，进入后台就可以看到 Uno-zen 这个主题了。
 
-Run the above command inside a temporary folder.
+## 准备工作
 
-Delete the `.git` folder inside the `uno-zen` folder.
-
-Copy and paste the `uno-zen` folder into the theme folder (`content/themes`).
-
-This will add a static copy of the theme to your blog's git repository and allow changes to be tracked by git.
-
-## Setup
-
-This theme needs a DOM selector library. The library is not provided by the theme. Instead, you need to paste one into the `Blog Footer` in the `Code injection` of your Ghost installation:
-
-```html
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-```
-
-You can use jQuery, but we recommend use [Zepto](https://github.com/madrobby/zepto), a lightweight jQuery alternative compatible with jQuery Plugins:
+你需要使用 jQuery，不过我更推荐使用 [Zepto](https://github.com/madrobby/zepto)，这是一个轻量级的 jQuery 替代库，它完全兼容 jQuery：
 
 ```html
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
 <script>jQuery = Zepto</script>
 ```
 
-It should look like this:
+你需要把它添加到博客的 Footer 里面：
 
 ![](http://i.imgur.com/xUXdFeH.png)
 
-## Update
+## 更新
 
-One objective of this project is to adopt an effective policy to have the latest version of the theme all the time. We have divided this process into two steps:
-
-
-### Update your current version
-
-Make sure you're in the uno-zen directory. Then run:
+在 `themes/uno-zen` 目录下执行：
 
 ```bash
-$ sh scripts/update.sh
+git pull origin
+``` 
+
+## 自定义
+
+我对原主题做了一些改动，主要有：
+
+### 代码高亮
+
+采用 [highlight.js](https://highlightjs.org/) 做代码高亮，只需要修改 `default.hbs` 中的主题即可，默认采用 tomorrow 主题：
+
+```js
+<link rel="stylesheet" href="/highlight/styles/tomorrow.css">
 ```
 
-That's all!
+### 社交按钮与图标
 
-### Receive a mail notification when a new version is available
+采用 [Font Awesome](http://fontawesome.io/) 的图标字体来展示社交按钮，请参考我的 `partials/social.hbs` 文件中的代码：
 
-Stay tuned for new releases with this [IFTTT recipe](https://ifttt.com/recipes):
+```html
+<a href="https://github.com/bestswifter" title="@KtZhang 的 Github" target="_blank">
+  <i class='social fa fa-github'></i>
+  <span class="label">Github</span>
+</a>
 
-<div align="center">
-<a target="blank" href="https://ifttt.com/recipes/330382-uno-zen-new-release-send-me-an-email"><img src="http://i.imgur.com/sbl8YiZ.png"></a>
-</br>
-</br>
-</div>
+<a href="http://weibo.com/bestswifter" title="@bestswifter" target="_blank">
+  <i class='social fa fa-weibo'></i>
+  <span class="label">weibo</span>
+</a>
+```
 
-## Development and Customization
+如果你需要使用别的图片，只要去 [Font Awesome](http://fontawesome.io/) 官网查一查图片名即可。
 
-See in [Documentation](https://github.com/Kikobeats/uno-zen/blob/master/DOCUMENTATION.md).
+### 头像与封面
 
-## Showcase
+封面图片可以直接在 ghost 后台进行配置。
 
-<div align="center">
-<a target="blank" href="http://kikobeats.com"><img src="http://i.imgur.com/crE8jt2.png"></a>
-<a target="blank" href="http://www.evilsocket.net"><img src="http://i.imgur.com/qanAbQf.png"></a>
-<a target="blank" href="http://pupboss.com"><img src="http://i.imgur.com/0AeVKgB.png"></a>
-<a target="blank" href="http://robinz.in"><img src="http://i.imgur.com/qDAbrch.jpg" /></a>
-</br>
-</br>
-.. and many, many more. <a href="https://github.com/Kikobeats/uno-zen/blob/master/SHOWCASE.md">See all</a>!.
-</div>
+使用 [Favicon Generator](http://realfavicongenerator.net/) 生成不同平台下的头像图片，并放入 `assets/img` 文件夹下。
 
+### 文章列表的总标题
 
-## Related
+在[我的博客](https://bestswifter.com)中，你可以看到所有文章的最上方有一个大标题：**作品集**，如果你想换成别的名字，可以在 ghost 后台插入代码，在 `{{ghost_head}}` 中加入以下代码：
 
-* [Uno Urban](https://kikobeats.github.io/uno-urban) – Commercial version of Uno Zen.
-* [Bloggy](https://github.com/Kikobeats/bloggy#bloggy-for-ghost) – Brand theme for Ghost.
+```js
+<script>
+var posts_headline = '作品集 ';
+</script>
+```
+
+### DISQUS 评论管理
+
+只要在 `{{ghost_head}}` 中加入你的站点的 shortname 即可：
+
+```js
+<script>
+var disqus_shortname = 'bestswifter'; // 改成自己的 shortname
+</script>
+```
+
+### 时间统计
+
+所有的文章都会显示 “xxx Days Ago”，表示这是你多久以前的文章。原来的代码似乎与中文版ghost不兼容，我做了一些修改，具体效果可以参考[我的博客](https://bestswifter.com)。
+
+### 自定义导航页
+
+你可以为你的博客配置多个导航页，比如 ”关于“ 页面。这个可以在 ghost 的后台进行配置。
+
+### TODO
+
+uno-zen 是一个非常优秀的主题，作者还在不断的对他进行更新，我也会不断探索新的功能并与大家分享。
 
 ## License
 
-MIT © [Kiko Beats](kikobeats.com)
+MIT © [bestswifter](https://bestswifter.com)
