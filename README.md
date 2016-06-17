@@ -20,18 +20,10 @@
 
 ### 我对原主题的改动
 
-- Totally rewritten using HTML5 and CSS3.
-- Improved development workflow with gulp + browersync.
-- Improved responsive and mobile experience.
-- Improved SEO Content with meta tags.
-
-Things that already existed:
-
-- A good [404 page error](http://kikobeats.com/404).
-- Search support.
-- Multiaccount support.
-- Loading progress state for each page.
-- Estimation about the time of reading.
+* 使用 highlight.js 实现代码高亮
+* 使用 [Font Awesome](http://fontawesome.io/) 管理社交按钮图标
+* 快速集成 Disqus 评论管理系统
+* 修改中文版 ghost 下，文章天数计算错误的bug
 
 ###你可以访问我的博客查看 [demo](https://bestswifter.com)
 
@@ -114,7 +106,7 @@ var posts_headline = '作品集 ';
 </script>
 ```
 
-### DISQUS 评论管理
+### Disqus 评论管理
 
 只要在 `{{ghost_head}}` 中加入你的站点的 shortname 即可：
 
